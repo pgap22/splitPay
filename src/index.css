@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    :root {
+        --text-secundary: #A4A8A3;
+        --danger-text: #B71C1C;
+        --danger-action: #7F1D1D;
+
+        --aqua-gradient: 90deg, #02AAB0 0%, #00CCAC 97.5%, #00CDAC 100%;
+        --blue-gradient: 90deg, #00C6FF 0%, #0072FF 100%;
+
+        --yellow-bg-notification: #FBC02D35;
+        --yellow-border-notification: #FBC02D49;
+        --yellow-text-notification: #5C5517;
+
+        --light-blue: #0093ED;
+
+        --gray-background: #61616140;
+        --gray-border: #616161;
+        --gray-text: #BDBDBD;
+
+        --green-background: #4CAF5040;
+        --green-border: #4CAF50;
+        --green-text: #68FA7F;
+
+        --red-background: #F4433640;
+        --red-border: #F44336;
+        --red-text: #EF5305;
+
+        --gradient-principal: 90deg, #AA2A7F 0%, #C13874 42.5%, #BF4040 100%;
+        --background: #1B1C1E;
+        --foreground: #262626;
+        --border: #414141;
+        --action-bg-button: #FFFFFF;
+        --action-text-button: #000000;
+        --text: #FFFFFF;
+        --yellow-text-notification: white;
+        
+
+    }
+
+    
+
+}
+
+
+
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+input {
+    background-color: transparent;
+    color: var(--text);
+}
+
+.border-gradient {
+    background: linear-gradient(to right, var(--background), var(--background)),
+        linear-gradient(var(--gradient-principal));
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    border-color: transparent;
+}
+
+.border-aqua-gradient {
+    background: linear-gradient(to right, var(--background), var(--background)),
+        linear-gradient(var(--aqua-gradient));
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    border-color: transparent;
+}
+
+.text-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+input:valid+.label-valid {
+    @apply text-blue-500
+}
+
+
+.icon-gradient {
+    fill: url(#mygradientlight);
+}
+
+html.dark .icon-gradient {
+    fill: url(#mygradientdark);
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: linear-gradient(var(--gradient-principal)); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+
+@media (max-width: 640px) {
+    .nav {
+        border-top: 3px solid;
+        border-image: linear-gradient(var(--gradient-principal)) 1 0 0 0;
+    }
+}
