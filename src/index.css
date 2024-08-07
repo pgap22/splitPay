@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    font-family: 'Lato';
+}
 
 @layer base {
     :root {
@@ -45,10 +48,6 @@
     
 
 }
-
-
-
-
 body {
     background-color: var(--background);
     color: var(--text);
