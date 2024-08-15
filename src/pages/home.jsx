@@ -23,11 +23,11 @@ export default function Home() {
 
     useEffect(()=>{
         socket.on("splitpay-deposit", data=>{
-            setUserSplitQ(data.user)
+            setUserSplitQ(data)
             navigate("/pay")
         })
-        return ()=> {
-            socket.close();
+        if(userSplitQ){
+            navigate("/pay")
         }
     },[])
 
