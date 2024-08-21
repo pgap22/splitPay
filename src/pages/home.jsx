@@ -27,6 +27,8 @@ export default function Home() {
             navigate("/pay")
         })
         if(userSplitQ){
+            socket.off("splitpay-deposit")
+            socket.disconnect()
             navigate("/pay")
         }
     },[])

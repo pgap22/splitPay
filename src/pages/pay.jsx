@@ -15,6 +15,7 @@ export default function Pay() {
     }, [splitAmount]);
 
     useEffect(()=>{
+        socket.connect();
         socket.on('splitpay-destroy-sessions',()=>{
             remove()
             deleteAmount()
@@ -27,6 +28,9 @@ export default function Pay() {
     },[])
 
     if (!splitQUser) {
+        socket.off("splitpay-destroy-sessions")
+        socket.off("splitpay-amount")
+        socket.disconnect()
         navigate("/");
     }
 
