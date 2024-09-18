@@ -7,7 +7,7 @@ const NoProtectedRoute = () => {
 
     console.log(splitPay)
     //   // Si no hay splitPay autenticado, redirige al home
-      if (splitPay || Object.keys(splitPay).length) {
+      if (splitPay && Object.keys(splitPay).length) {
         return <Navigate to="/home" replace />;
       }
 

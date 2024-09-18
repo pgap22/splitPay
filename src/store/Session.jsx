@@ -26,7 +26,7 @@ const SessionProvider = ({ children }) => {
       setLoading(true);
       const token = localStorage.getItem("token");
       const { data } = await obtenerPerfil(token ?? "");
-      setSplitPay(data);
+      setSplitPay(data ? data : {});
       setSplitPayToken(token);
       setLoading(false);
     } catch (error) {
@@ -41,7 +41,6 @@ const SessionProvider = ({ children }) => {
 
   const logout = () => {
     setSplitPay({});
-    setImagen(null);
     localStorage.removeItem("token");
     window.location.href = "/";
   };
