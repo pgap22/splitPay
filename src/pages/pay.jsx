@@ -19,7 +19,7 @@ export default function Pay() {
         socket.on('splitpay-destroy-sessions',()=>{
             remove()
             deleteAmount()
-            navigate("/")
+            navigate("/logout")
         })
         socket.on('splitpay-amount', data=>{
             console.log(sumDecimal(+splitAmountRef.current,+data))
