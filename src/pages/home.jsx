@@ -3,6 +3,7 @@ import { clientAxios } from '../config/clientAxios';
 import { socket } from '../config/socketclient';
 import { useLocalStorage } from 'usehooks-ts';
 import { useNavigate } from 'react-router-dom';
+import { useSession } from '../hook/useSession';
 
 
 
@@ -13,6 +14,7 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     const [userSplitQ, setUserSplitQ] = useLocalStorage("splitq-user")
     const [countdownInterval, setCountdownInterval] = useState()
+    const {logout} = useSession()
     const navigate = useNavigate();
 
     const formatTime = (seconds) => {
@@ -59,6 +61,10 @@ export default function Home() {
                     setCode(data.code)
                     setLoading(false)
                 } catch (error) {
+                    if(error.response.data){
+                        logout()
+                        navigate("/")
+                    }
                     setLoading(true)
                 }
             }

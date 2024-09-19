@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'; // Form validation and handling
 import { clientAxios } from '../config/clientAxios';
 import { useSession } from '../hook/useSession';
+import axios from 'axios';
 
 const TokenLogin = () => {
     const [loading, setLoading] = useState(false); // State for loading
@@ -13,7 +14,7 @@ const TokenLogin = () => {
         setLoading(true); // Set loading to true when the request starts
         setErrorMessage(''); // Clear any previous error message
         try {
-            const { data } = await clientAxios("/get_splitpay", {
+            const { data } = await axios(import.meta.env.VITE_SPLITPAY_SERVER+"/get_splitpay", {
                 headers: {
                     'Authorization': 'Bearer ' + form.token
                 }
